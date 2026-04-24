@@ -1,0 +1,53 @@
+@import '../../styles/_variables.scss';
+
+.introduction {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 99;
+  background: var(--white);
+
+  p {
+    display: flex;
+    align-items: center;
+    font-size: 48px;
+    color: var(--black);
+    position: relative;
+    z-index: 1;
+
+    @include mobile {
+      font-size: 28px;
+    }
+
+    span {
+      display: block;
+      width: 12px;
+      height: 12px;
+      background: var(--black);
+      border-radius: 50%;
+      margin-right: 10px;
+
+      @include mobile {
+        width: 8px;
+        height: 8px;
+        margin-right: 8px;
+      }
+    }
+  }
+
+  svg {
+    position: absolute;
+    height: calc(100% + 300px);
+    width: 100%;
+    top: -300px;
+    left: 0;
+    pointer-events: none;
+
+    path {
+      fill: var(--white);
+    }
+  }
+}

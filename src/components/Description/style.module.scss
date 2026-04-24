@@ -1,0 +1,71 @@
+@import '../../styles/_variables.scss';
+
+.description {
+  position: relative;
+  z-index: 1;
+  padding: var(--section-gap) var(--padding-x);
+  background: var(--white);
+  display: flex;
+  justify-content: center;
+
+  @include mobile {
+    padding: 80px 24px;
+  }
+}
+
+.body {
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+
+  @include tablet {
+    gap: 48px;
+  }
+
+  @include mobile {
+    gap: 36px;
+  }
+
+  p:first-child {
+    font-size: clamp(24px, 3vw, 48px);
+    font-weight: 300;
+    line-height: 1.4;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    color: var(--black);
+
+    @include tablet {
+      font-size: clamp(20px, 2.5vw, 36px);
+    }
+
+    @include mobile {
+      font-size: clamp(18px, 5vw, 28px);
+      gap: 6px 8px;
+    }
+  }
+
+  p:nth-child(2) {
+    font-size: clamp(14px, 1.2vw, 18px);
+    font-weight: 400;
+    line-height: 1.8;
+    color: var(--zinc-600);
+
+    @include mobile {
+      font-size: 14px;
+    }
+  }
+
+  > div:last-child {
+    @include mobile {
+      width: 100%;
+    }
+  }
+}
+
+.mask {
+  overflow: hidden;
+  display: inline-flex;
+}

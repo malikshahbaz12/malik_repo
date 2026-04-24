@@ -1,0 +1,95 @@
+@import '../../../styles/_variables.scss';
+
+.menu {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 40vw;
+  min-width: 320px;
+  max-width: 600px;
+  height: 100vh;
+  background: var(--white);
+  border-left: 1px solid var(--zinc-200);
+  z-index: 98;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 100px 50px 50px 50px;
+  box-sizing: border-box;
+
+  @include tablet {
+    width: 50vw;
+    padding: 90px 40px 40px 40px;
+  }
+
+  @include mobile {
+    width: 100vw;
+    max-width: none;
+    padding: 80px 24px 40px 24px;
+  }
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .header {
+    p {
+      color: var(--zinc-400);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border-bottom: 1px solid var(--zinc-200);
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.navLinkContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--zinc-200);
+
+  @include mobile {
+    padding: 18px 0;
+  }
+
+  a {
+    font-size: clamp(28px, 3.5vw, 46px);
+    font-weight: 300;
+    color: var(--black);
+    transition: all 0.5s var(--ease-out);
+
+    &:hover {
+      color: var(--zinc-600);
+      transform: translate(4px, 0);
+    }
+
+    @include mobile {
+      font-size: clamp(32px, 8vw, 52px);
+    }
+  }
+}
+
+.indicator {
+  width: 8px;
+  height: 8px;
+  background: var(--black);
+  border-radius: 50%;
+  position: absolute;
+  left: -20px;
+
+  @include mobile {
+    left: -16px;
+  }
+}

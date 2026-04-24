@@ -1,0 +1,224 @@
+@import '../../styles/_variables.scss';
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 var(--padding-x);
+  z-index: 10;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: none;
+
+  @include tablet {
+    height: 70px;
+  }
+
+  @include mobile {
+    height: 60px;
+    padding: 0 24px;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: transform 0.5s var(--ease-out);
+
+  &:hover {
+    transform: translate(4px, 0);
+  }
+
+  @include mobile {
+    gap: 8px;
+  }
+}
+
+.copyright {
+  font-size: 20px;
+  font-weight: 300;
+  color: white;
+
+  @include mobile {
+    font-size: 16px;
+  }
+}
+
+.name {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  overflow: hidden;
+}
+
+.codeBy {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+
+  @include mobile {
+    display: none;
+  }
+}
+
+.dennis,
+.snellenberg {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: white;
+
+  @include mobile {
+    font-size: 12px;
+  }
+}
+
+.nav {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+
+  @include tablet {
+    gap: 32px;
+  }
+
+  @include mobile {
+    display: none;
+  }
+}
+
+.el {
+  position: relative;
+  cursor: pointer;
+
+  a {
+    font-size: 14px;
+    font-weight: 400;
+    color: white;
+    padding: 8px 0;
+    transition: all 0.5s var(--ease-out);
+
+    &:hover {
+      opacity: 0.7;
+      transform: translate(4px, 0);
+    }
+  }
+
+  &:hover .indicator {
+    opacity: 1;
+    transform: translateX(-50%) scaleX(1);
+  }
+}
+
+.indicator {
+  width: 100%;
+  height: 1px;
+  background: white;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  opacity: 0;
+  transition: all 0.5s var(--ease-out);
+  transform-origin: center;
+}
+
+.headerButtonContainer {
+  position: fixed;
+  bottom: 40px;
+  right: var(--padding-x);
+  width: 70px;
+  height: 70px;
+  scale: 0;
+  z-index: 99;
+
+  @include tablet {
+    bottom: 30px;
+    width: 60px;
+    height: 60px;
+  }
+
+  @include mobile {
+    bottom: 24px;
+    right: 24px;
+    width: 56px;
+    height: 56px;
+    scale: 1 !important;
+  }
+}
+
+.button {
+  width: 100%;
+  height: 100%;
+  background: var(--black);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 1px solid var(--black);
+  transition: all 0.5s var(--ease-out);
+
+  &:hover {
+    background: var(--zinc-800);
+    transform: scale(1.05);
+  }
+
+  @include mobile {
+    border-radius: 50%;
+  }
+}
+
+.burger {
+  width: 20px;
+  height: 1px;
+  background: white;
+  position: relative;
+  transition: all 0.3s;
+
+  @include mobile {
+    width: 18px;
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background: white;
+    transition: all 0.3s;
+  }
+
+  &::before {
+    top: -5px;
+  }
+
+  &::after {
+    top: 5px;
+  }
+}
+
+.burgerActive .burger {
+  background: transparent;
+
+  &::before {
+    top: 0;
+    transform: rotate(45deg) translateY(0);
+  }
+
+  &::after {
+    top: 0;
+    transform: rotate(-45deg) translateY(0);
+  }
+}

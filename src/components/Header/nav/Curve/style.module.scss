@@ -1,0 +1,18 @@
+@import '../../../../styles/_variables.scss';
+
+.svgCurve {
+  position: absolute;
+  left: -99px;
+  top: 0;
+  width: 100px;
+  height: 100%;
+
+  @include mobile {
+    display: none;
+  }
+
+  path {
+    fill: #1C1D20;
+    stroke: none;
+  }
+}

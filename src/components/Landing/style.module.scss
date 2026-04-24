@@ -1,0 +1,298 @@
+@import '../../styles/_variables.scss';
+
+.landing {
+  position: relative;
+  height: 90vh;
+  min-height: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: var(--section-gap);
+  padding: 0 var(--padding-x);
+  isolation: isolate;
+  overflow: hidden;
+
+  @include laptop {
+    height: 85vh;
+    min-height: 650px;
+  }
+
+  @include tablet {
+    height: 80vh;
+    min-height: 600px;
+  }
+
+  @include mobile {
+    height: 70vh;
+    min-height: 500px;
+    padding: 0 24px;
+  }
+
+  @supports (height: 100svh) {
+    @include mobile {
+      height: 100svh;
+      min-height: 100svh;
+    }
+  }
+}
+
+.heroContent {
+  position: relative;
+  z-index: 10;
+  text-align: left;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  mix-blend-mode: difference;
+  color: white;
+  align-items: flex-start;
+
+  @include mobile {
+    gap: 16px;
+  }
+}
+
+.headerAbove {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 4px;
+  animation: fadeInUp 0.8s ease-out;
+
+  @include mobile {
+    margin-bottom: 2px;
+  }
+}
+
+.arrow {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1.5px solid currentColor;
+  animation: float 3s ease-in-out infinite;
+
+  @include mobile {
+    width: 32px;
+    height: 32px;
+  }
+
+  svg {
+    width: 14px;
+    height: 14px;
+    color: white;
+
+    @include mobile {
+      width: 12px;
+      height: 12px;
+    }
+  }
+}
+
+.heroTitle {
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  margin: 0;
+  text-wrap: balance;
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+
+  @include tablet {
+    font-size: clamp(22px, 2.8vw, 32px);
+  }
+
+  @include mobile {
+    font-size: clamp(18px, 5vw, 28px);
+  }
+
+  span {
+    font-weight: 300;
+    opacity: 0.9;
+  }
+}
+
+.heroSubtitle {
+  font-size: clamp(12px, 0.9vw, 14px);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 450px;
+  opacity: 0.8;
+  font-weight: 400;
+  animation: fadeInUp 0.8s ease-out 0.4s both;
+
+  @include mobile {
+    font-size: 12px;
+    max-width: 100%;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.imageWrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 16px;
+  will-change: transform;
+  transition: transform 0.1s linear;
+  user-select: none;
+  -webkit-user-select: none;
+  pointer-events: none;
+
+  @include mobile {
+    border-radius: 12px;
+  }
+}
+
+.heroImage {
+  object-fit: contain !important;
+  object-position: center center !important;
+  user-select: none;
+  -webkit-user-drag: none;
+  width: 100% !important;
+  height: 100% !important;
+
+  @include desktop {
+    object-fit: cover !important;
+    object-position: center 35% !important;
+  }
+
+  @include laptop {
+    object-fit: cover !important;
+    object-position: center 30% !important;
+  }
+
+  @include tablet {
+    object-fit: cover !important;
+    object-position: center 25% !important;
+  }
+
+  @include mobile {
+    object-fit: cover !important;
+    object-position: center center !important;
+  }
+}
+
+.scrollIndicator {
+  position: absolute;
+  bottom: 48px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  mix-blend-mode: difference;
+  color: white;
+
+  @include mobile {
+    bottom: 32px;
+  }
+}
+
+.scrollText {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  line-height: 1;
+
+  @include mobile {
+    font-size: 11px;
+  }
+}
+
+.scrollIndicator svg {
+  width: 24px;
+  height: 24px;
+  animation: scrollBounce 2s ease-in-out infinite;
+
+  @include mobile {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@keyframes scrollBounce {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 1;
+  }
+}
+
+.marqueeStrip {
+  position       : absolute;
+  bottom         : 0;
+  left           : 0;
+  right          : 0;
+  z-index        : 3;
+  background     : transparent;
+  border-top     : 1px solid rgba(255, 255, 255, 0.12);
+  padding        : 16px 0;
+  overflow       : hidden;
+  pointer-events : none;
+  transition     : opacity 0.3s ease-out;
+  will-change    : opacity;
+
+  @include mobile {
+    padding: 12px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+.marqueeTrack {
+  display     : flex;
+  width       : max-content;
+  will-change : transform;
+  align-items : center;
+}
+
+.marqueeItem {
+  display        : inline-block;
+  font-size      : clamp(40px, 7vw, 96px);
+  font-weight    : 300;
+  color          : white;
+  white-space    : nowrap;
+  padding-right  : 40px;
+  line-height    : 1;
+  letter-spacing : -0.01em;
+  user-select    : none;
+
+  @include mobile {
+    font-size: clamp(32px, 10vw, 48px);
+    padding-right: 24px;
+  }
+}

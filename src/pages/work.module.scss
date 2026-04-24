@@ -1,0 +1,125 @@
+@import '../styles/_variables.scss';
+
+.work {
+  padding-top: 80px;
+  min-height: 100vh;
+  background: var(--white);
+
+  @include mobile {
+    padding-top: 60px;
+  }
+}
+
+.marqueeHeader {
+  border-bottom: 1px solid var(--zinc-200);
+  padding: 80px 0 20px;
+  overflow: hidden;
+
+  @include mobile {
+    padding: 60px 0 16px;
+  }
+}
+
+.marquee {
+  overflow: hidden;
+}
+
+.marqueeInner {
+  display: flex;
+  white-space: nowrap;
+  width: max-content;
+
+  p {
+    font-size: clamp(60px, 10vw, 120px);
+    font-weight: 300;
+    padding-right: 40px;
+    color: var(--black);
+
+    @include mobile {
+      font-size: clamp(40px, 10vw, 80px);
+      padding-right: 30px;
+    }
+  }
+}
+
+.projectGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2vw;
+  padding: 60px var(--padding-x);
+
+  @include tablet {
+    gap: 3vw;
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    padding: 40px 24px;
+    gap: 40px;
+  }
+}
+
+.projectCard {
+  cursor: pointer;
+  transition: transform 0.5s var(--ease-out);
+
+  &:hover {
+    transform: translateY(-8px);
+
+    .imageArea img {
+      transform: scale(1.05);
+    }
+  }
+
+  @include mobile {
+    &:hover {
+      transform: translateY(-4px);
+    }
+  }
+}
+
+.imageArea {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--zinc-100);
+
+  @include mobile {
+    border-radius: 6px;
+  }
+
+  img {
+    transition: transform 0.7s var(--ease-out);
+  }
+}
+
+.projectInfo {
+  padding: 20px 0;
+
+  @include mobile {
+    padding: 16px 0;
+  }
+
+  h3 {
+    font-size: 20px;
+    font-weight: 400;
+    margin: 0 0 8px 0;
+    color: var(--black);
+
+    @include mobile {
+      font-size: 18px;
+    }
+  }
+
+  p {
+    font-size: 12px;
+    color: var(--zinc-500);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+
+    @include mobile {
+      font-size: 11px;
+    }
+  }
+}
