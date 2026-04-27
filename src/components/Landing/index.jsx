@@ -4,54 +4,21 @@ import styles from './style.module.scss'
 
 export default function Landing() {
   const imageRef = useRef(null)
-  const marqueeRef = useRef(null)
-  const marqueeStripRef = useRef(null)
   const landingRef = useRef(null)
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!imageRef.current || !marqueeStripRef.current || !landingRef.current) return
+      if (!imageRef.current || !landingRef.current) return
       
       const scrollY = window.scrollY
       const speed = -0.3
       const yPos = scrollY * speed
       
       imageRef.current.style.transform = `translate3d(0, ${yPos}px, 0)`
-
-      // Calculate hero section visibility
-      const heroHeight = landingRef.current.offsetHeight
-      const scrollProgress = scrollY / heroHeight
-      
-      // Responsive fade thresholds - faster fade on mobile
-      const isMobile = window.innerWidth <= 767
-      const fadeStart = isMobile ? 0.05 : 0.1
-      const fadeRange = isMobile ? 0.25 : 0.4
-      
-      // Fade out marquee as we scroll down, fade in when back at top
-      let opacity = 1
-      if (scrollProgress > fadeStart) {
-        opacity = Math.max(0, 1 - ((scrollProgress - fadeStart) / fadeRange))
-      }
-      
-      marqueeStripRef.current.style.opacity = opacity
-      marqueeStripRef.current.style.visibility = opacity === 0 ? 'hidden' : 'visible'
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.to(marqueeRef.current, {
-        xPercent : -50,
-        repeat   : -1,
-        duration : 15,
-        ease     : 'none',
-      })
-    })
-
-    return () => ctx.revert()
   }, [])
 
   return (
@@ -72,7 +39,7 @@ export default function Landing() {
           </div>
         </div>
         <h1 className={styles.heroTitle}>
-          <span>Freelance</span> Flutter Developer
+          <span>Freelance</span> <strong>Mobile App Developer</strong>
         </h1>
         <p className={styles.heroSubtitle}>
           Building beautiful mobile experiences with Flutter.
@@ -85,16 +52,6 @@ export default function Landing() {
           alt="Malik Shahbaz - Flutter Developer"
           className={styles.heroImage}
         />
-      </div>
-
-      <div className={styles.marqueeStrip} ref={marqueeStripRef}>
-        <div className={styles.marqueeTrack} ref={marqueeRef}>
-          {Array.from({ length: 8 }).map((_, i) => (
-            <span key={i} className={styles.marqueeItem}>
-              Malik Shahbaz—
-            </span>
-          ))}
-        </div>
       </div>
 
       <div className={styles.scrollIndicator}>

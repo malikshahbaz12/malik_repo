@@ -4,7 +4,7 @@ import styles from './style.module.scss'
 import { slideUp, opacity } from './anim'
 import RoundedButton from '../common/RoundedButton'
 
-const phrase = "Building beautiful mobile experiences with Flutter. Creating cross-platform apps that users love. Specializing in iOS and Android development with clean, maintainable code."
+const phrase = "Crafting high-performance mobile experiences with Flutter. Building cross-platform apps for iOS and Android that feel native, look stunning, and scale effortlessly."
 
 export default function Description() {
   const description = useRef(null)

@@ -3,13 +3,21 @@
 .description {
   position: relative;
   z-index: 1;
-  padding: var(--section-gap) var(--padding-x);
+  padding: 80px var(--padding-x);
   background: var(--white);
   display: flex;
   justify-content: center;
 
+  @include laptop {
+    padding: 70px var(--padding-x);
+  }
+
+  @include tablet {
+    padding: 60px var(--padding-x);
+  }
+
   @include mobile {
-    padding: 80px 24px;
+    padding: 50px 24px;
   }
 }
 
